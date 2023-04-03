@@ -1,5 +1,6 @@
 package NT.day08_Assertion_DropDown_300323;
 
+import NT.utilities.TestBase;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 import java.util.List;
 
-public class C02_DropDown {
+public class C02_DropDown extends TestBase {
     /*
     Given kullanici https://testcenter.techproeducation.com/index.php?page=dropdown sayfasindayken
     -3 farklı test methodu oluşturalım
@@ -67,6 +68,9 @@ public class C02_DropDown {
         WebElement gun=driver.findElement(By.xpath("//*[@id='day']"));
         Select select2=new Select(gun);
         select2.selectByVisibleText("7");
+
+        //ddmVisibletext(gun,"7");
+
     }
 
     @Test

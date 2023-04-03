@@ -1,9 +1,10 @@
-package NT.day09_DropDown_Allerts;
+package NT.day09_DropDown_Allerts_010423;
 
 import NT.utilities.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class C03_Allerts extends TestBase {
     /*
@@ -36,13 +37,6 @@ public class C03_Allerts extends TestBase {
 
         Assert.assertEquals(expectedText,actualText);
 
-        //    Bir metod olusturun: dismissAlert
-
-        //    2. butona tıklayın, uyarıdaki Cancel butonuna tıklayın ve result mesajının
-
-        //    Bir metod olusturun: sendKeysAlert
-        //    3. butona tıklayın, uyarıdaki metin kutusuna isminizi yazin, OK butonuna
-        //    tıklayın ve result mesajında isminizin görüntülendiğini doğrulayın.
 
     }
 
@@ -51,7 +45,7 @@ public class C03_Allerts extends TestBase {
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
         //    2. butona tıklayın, uyarıdaki Cancel butonuna tıklayın ve result mesajının
         //    “successfuly” icermedigini test edin.
-        driver.findElement(By.cssSelector("button[onclick='jsAlert()']")).click();
+        driver.findElement(By.cssSelector("button[onclick='Confirm()']")).click();
         Thread.sleep(4000);
         driver.switchTo().alert().dismiss();
 
@@ -60,5 +54,20 @@ public class C03_Allerts extends TestBase {
         String expectedTest="successfuly";
         Assert.assertFalse(actualTest.contains(expectedTest));
 
+    }
+
+    @Test
+    public void sendKeysAllert() throws InterruptedException {
+        driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
+        //    3. butona tıklayın, uyarıdaki metin kutusuna isminizi yazin, OK butonuna tiklayin
+        driver.findElement(By.cssSelector("button[onclick='jsPrompt()']")).click();
+        driver.switchTo().alert().sendKeys("Aykut");
+        driver.switchTo().alert().accept();
+        waitWithThreadSleep(3);
+        WebElement result= driver.findElement(By.cssSelector("p[id='result']"));
+
+        // result mesajında isminizin görüntülendiğini doğrulayın.
+        Assert.assertTrue(result.getText().contains("Aykut"));
+        System.out.println(result.getText());
     }
 }
