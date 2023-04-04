@@ -30,7 +30,7 @@ public class C01_AllertMethods extends TestBase {
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
         //    2. butona tıklayın, uyarıdaki Cancel butonuna tıklayın ve result mesajının
         //    “successfuly” icermedigini test edin.
-        driver.findElement(By.cssSelector("button[onclick='jsConfirm()ss']")).click();
+        driver.findElement(By.cssSelector("button[onclick='jsConfirm()']")).click();
         waitWithThreadSleep(4);
         allertDismiss();
 
@@ -50,6 +50,7 @@ public class C01_AllertMethods extends TestBase {
         waitWithThreadSleep(4);
         //    tıklayın ve result mesajında isminizin görüntülendiğini doğrulayın.
         allertPrompt("Aykut");
+        allertText();
         allertAccept();
         waitWithThreadSleep(3);
         //   result mesajında isminizin görüntülendiğini doğrulayın.
@@ -57,4 +58,5 @@ public class C01_AllertMethods extends TestBase {
         Assert.assertTrue(result.getText().contains("Aykut"));
         System.out.println(result.getText());
     }
+
 }

@@ -50,7 +50,7 @@ public abstract class TestBase {
 
     //Allert GETTEXT
     public static void allertText(){
-        driver.switchTo().alert().getText();
+        System.out.println(driver.switchTo().alert().getText());
     }
 
     //Allert ALLERTPROMPT

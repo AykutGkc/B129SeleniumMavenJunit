@@ -40,7 +40,7 @@ public class C02_Iframe extends TestBase {
         String actualTEst2 = driver.findElement(By.xpath("//*[text()='Applications lists']")).getText();
         Assert.assertEquals(actualTEst2, "Applications lists");
 
-        //➢ Son olarak footer daki ‘Povered By’ yazisini varligini test edilip
+        //➢ Son olarak ilk sayfa daki footer daki ‘Povered By’ yazisini varligini test edilip
         driver.switchTo().defaultContent();
         WebElement poveredByYazisi=driver.findElement(By.xpath("//*[text()='Povered By']"));
         Assert.assertTrue(poveredByYazisi.getText().contains("Povered By"));
