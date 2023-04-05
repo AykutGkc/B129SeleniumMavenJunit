@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.Set;
 
-public class c03_WindowsHandles extends TestBase {
+public class C03_WindowsHandles extends TestBase {
     /*
     https://the-internet.herokuapp.com/windows adresine gidin.
     İlk sayfanın ID'sini(Window Handle değerini) alın.
