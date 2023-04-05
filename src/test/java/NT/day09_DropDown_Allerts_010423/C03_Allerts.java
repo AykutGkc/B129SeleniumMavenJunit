@@ -1,6 +1,6 @@
 package NT.day09_DropDown_Allerts_010423;
 
-import NT.utilities.TestBase;
+import utilities.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;

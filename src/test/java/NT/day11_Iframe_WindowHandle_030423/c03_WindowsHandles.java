@@ -1,15 +1,12 @@
 package NT.day11_Iframe_WindowHandle_030423;
 
-import NT.utilities.TestBase;
+import utilities.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import java.util.Stack;
 
 public class c03_WindowsHandles extends TestBase {
     /*

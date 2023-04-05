@@ -1,6 +1,6 @@
 package NT.day08_Assertion_DropDown_300323;
 
-import NT.utilities.TestBase;
+import utilities.TestBase;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;

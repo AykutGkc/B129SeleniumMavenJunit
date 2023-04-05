@@ -1,6 +1,6 @@
 package NT.day11_Iframe_WindowHandle_030423;
 
-import NT.utilities.TestBase;
+import utilities.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
