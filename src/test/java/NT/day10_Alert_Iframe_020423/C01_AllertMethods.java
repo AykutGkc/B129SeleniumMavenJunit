@@ -15,7 +15,7 @@ public class C01_AllertMethods extends TestBase {
         //    1. butona tıklayın, uyarıdaki OK butonuna tıklayın ve result mesajının  “You successfully clicked an alert” oldugunu test edin.
         driver.findElement(By.xpath("//*[text()='Click for JS Alert']")).click();
         waitWithThreadSleep(4);
-        allertAccept();
+        alertAccept();
         waitWithThreadSleep(4);
         String actualText=driver.findElement(By.xpath("//*[@id='result']")).getText();
         String expectedText="You successfully clicked an alert";
@@ -51,7 +51,7 @@ public class C01_AllertMethods extends TestBase {
         //    tıklayın ve result mesajında isminizin görüntülendiğini doğrulayın.
         allertPrompt("Aykut");
         allertText();
-        allertAccept();
+        alertAccept();
         waitWithThreadSleep(3);
         //   result mesajında isminizin görüntülendiğini doğrulayın.
         WebElement result= driver.findElement(By.cssSelector("p[id='result']"));

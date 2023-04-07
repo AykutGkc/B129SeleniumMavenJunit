@@ -17,10 +17,12 @@ https://techproeducation.com adresine gidin
     public void actionsTest() {
         //https://techproeducation.com adresine gidin
         driver.get("https://techproeducation.com/");
+        waitWithThreadSleep(10);
+        Actions actions=new Actions(driver);
+        //actions.sendKeys(Keys.ESCAPE).perform();
         driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
 
         // Sayfanın alt tarafına gidin
-        Actions actions=new Actions(driver);
         waitWithThreadSleep(2);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitWithThreadSleep(2);
@@ -44,6 +46,11 @@ https://techproeducation.com adresine gidin
         actions.sendKeys(Keys.PAGE_UP).perform();
         waitWithThreadSleep(3);
         actions.sendKeys(Keys.ARROW_UP).perform();
+        waitWithThreadSleep(2);
+        actions.sendKeys(Keys.END).perform();
+        waitWithThreadSleep(2);
+        actions.sendKeys(Keys.HOME).perform();
+
 
 
 

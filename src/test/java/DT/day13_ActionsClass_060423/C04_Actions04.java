@@ -69,8 +69,21 @@ public class C04_Actions04 extends TestBase {
                 clickAndHold(source).
                 moveByOffset(388,34).//istedigimiz koordinata elementimizi tasiyabiliriz.
                 release().
+                perform();
+waitWithThreadSleep(2);
+        actions.
+                clickAndHold(source).
+                moveByOffset(358,173).//istedigimiz koordinata elementimizi tasiyabiliriz.
+                release().perform();
+        waitWithThreadSleep(2);
+
+        actions.
+                clickAndHold(source).
+                moveByOffset(79,229).//istedigimiz koordinata elementimizi tasiyabiliriz.
+                release().
                 build().
                 perform();
+
 
     }
 }

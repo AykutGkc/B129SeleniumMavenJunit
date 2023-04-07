@@ -42,7 +42,7 @@ public abstract class TestBase {
     }
 
     //Allert ACCEPT
-    public static void allertAccept() {
+    public static void alertAccept() {
         driver.switchTo().alert().accept();
     }
 
