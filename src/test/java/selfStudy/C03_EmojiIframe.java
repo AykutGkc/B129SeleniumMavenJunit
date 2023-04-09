@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
-public class C03 extends TestBase {
+public class C03_EmojiIframe extends TestBase {
     // https://www.jqueryscript.net/demo/Easy-iFrame-based-Twitter-Emoji-Picker-Plugin-jQuery-Emoojis/ sitesine gidin
     // ikinci emojiye tıklayın
     // İkinci emoji öğelerini yazdırınız

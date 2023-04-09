@@ -10,7 +10,7 @@ import utilities.TestBase;
 
 import java.time.Duration;
 
-public class C04  {
+public class C04_AramaSonucuYazdir {
 
     /*
     -BeforeClass methodu ile driver ı olusturun ve Maximize edin, 15 sn bekletin
