@@ -33,9 +33,10 @@ public class C02_WindowHandle extends TestBase {
         waitWithThreadSleep(2);
 
         // 3- yeni bir pencere acip https://www.bestbuy.com sayfasina gidelim
-        driver.switchTo().newWindow(WindowType.WINDOW);
+        driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://www.bestbuy.com/");
         String sayfa2Handle=driver.getWindowHandle();
+        driver.getWindowHandles();
         waitWithThreadSleep(2);
 
         // 4- title'in 'Best Buy' icerdigini test edelim
@@ -61,6 +62,8 @@ public class C02_WindowHandle extends TestBase {
         // 8- logonun gorundugunu test edelim
         WebElement logo=driver.findElement(By.xpath("(//img[@class='logo'])[1]"));
         Assert.assertTrue(logo.isDisplayed());
+        waitWithThreadSleep(2);
+       swithToWindow(0);
 
     }
 }
