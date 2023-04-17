@@ -1,18 +1,24 @@
 package utilities;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class TestBase {
@@ -20,6 +26,9 @@ public abstract class TestBase {
     //orn:TestBase base = new TestBase();
     //Bu class'i extends ettigimiz test classlarindan ulasabiliriz.
     protected static WebDriver driver;
+    protected static ExtentReports extentReports; //raporlamayi baslatir
+    protected static ExtentHtmlReporter extentHtmlReporter; //Raporu html formatinda düzenler
+    protected static ExtentTest extentTest; //Tüm test asamalarinda extentTest objesi ile bilgi ekleriz.
 
     @Before
     public void setUp() throws Exception {
@@ -27,10 +36,27 @@ public abstract class TestBase {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //------------------------------
+
+        extentReports=new ExtentReports();
+        String date=new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String FilePath="TestOutput/reports/extentReport"+date+".html";
+        extentHtmlReporter=new ExtentHtmlReporter(FilePath);
+        extentReports.attachReporter(extentHtmlReporter);
+
+        //Raporda gözükmesini istedigimiz bilgileri icin
+        extentReports.setSystemInfo("Browser","Chrome");
+        extentReports.setSystemInfo("Tester","Aykut");
+        extentHtmlReporter.config().setDocumentTitle("Extent Report");
+        extentHtmlReporter.config().setReportName("Smoke Test Raporu");
+
+
+
     }
 
     @After
     public void tearDown() throws Exception {
+        extentReports.flush();
         Thread.sleep(3000);
         driver.quit();
     }
@@ -118,4 +144,29 @@ public abstract class TestBase {
         WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(second));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
+    //Tüm sayfa ScreenShot
+    public static void fullScrennShot () {
+        String date=new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String FilePath="TestOutput/screenShot"+date+".png";
+        TakesScreenshot ts= (TakesScreenshot) driver;
+        try {
+            FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File(FilePath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Web element Screen Shot
+
+    public static void webElementScreenShot(WebElement element){
+        String date=new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String FilePath="TestOutput/webElementScreenShot"+date+".png";
+        try {
+            FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE),new File(FilePath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
