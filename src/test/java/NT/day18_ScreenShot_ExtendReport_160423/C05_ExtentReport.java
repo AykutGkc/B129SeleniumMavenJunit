@@ -9,6 +9,7 @@ import utilities.TestBase;
 public class C05_ExtentReport extends TestBase {
     @Test
     public void test() {
+        extentReport();
         extentTest=extentReports.createTest("ExtentTest", "Test Raporu");
 
         //Techpro sayfasina gidelim
@@ -30,5 +31,6 @@ public class C05_ExtentReport extends TestBase {
         webElementScreenShot(sonucYazisi);
         extentTest.info("Sonuc yazisinin resmi alindi");
         extentTest.pass("Sayfa kapatildi");
+        extentReports.flush();
     }
 }

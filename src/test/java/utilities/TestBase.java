@@ -38,25 +38,10 @@ public abstract class TestBase {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //------------------------------
 
-        extentReports=new ExtentReports();
-        String date=new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
-        String FilePath="TestOutput/reports/extentReport"+date+".html";
-        extentHtmlReporter=new ExtentHtmlReporter(FilePath);
-        extentReports.attachReporter(extentHtmlReporter);
-
-        //Raporda gözükmesini istedigimiz bilgileri icin
-        extentReports.setSystemInfo("Browser","Chrome");
-        extentReports.setSystemInfo("Tester","Aykut");
-        extentHtmlReporter.config().setDocumentTitle("Extent Report");
-        extentHtmlReporter.config().setReportName("Smoke Test Raporu");
-
-
-
     }
 
     @After
     public void tearDown() throws Exception {
-        extentReports.flush();
         Thread.sleep(3000);
         driver.quit();
     }
@@ -167,6 +152,26 @@ public abstract class TestBase {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    //ExtentReports
+    public void extentReport(){
+        extentReports=new ExtentReports();
+        String date=new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String FilePath="TestOutput/reports/extentReport"+date+".html";
+        extentHtmlReporter=new ExtentHtmlReporter(FilePath);
+        extentReports.attachReporter(extentHtmlReporter);
+
+        //Raporda gözükmesini istedigimiz bilgileri icin
+        extentReports.setSystemInfo("Browser","Chrome");
+        extentReports.setSystemInfo("Tester","Aykut");
+        extentHtmlReporter.config().setDocumentTitle("Extent Report");
+        extentHtmlReporter.config().setReportName("Smoke Test Raporu");
+    }
+    //Web Table
+    public static void webTable(int satir,int sutun){
+        WebElement satirSutun=driver.findElement(By.xpath("(//tbody)[1]//tr["+satir+"]//td["+sutun+"]"));
+        System.out.println(satirSutun.getText());
     }
 
 }
