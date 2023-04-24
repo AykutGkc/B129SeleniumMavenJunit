@@ -81,14 +81,18 @@ public class C01_ExcelRead  {
 
         //    Ülke-Başkent şeklinde verileri yazdırın
         Map<String,String> ulkeVeBaskentleri = new HashMap<>();
+
         for (int index = 1; index < workbook.getSheet("Sheet1").getPhysicalNumberOfRows() ; index++) {
             String ülke=workbook.getSheet("Sheet1").getRow(index).getCell(0).toString();
             String baskent=workbook.getSheet("Sheet1").getRow(index).getCell(1).toString();
             ulkeVeBaskentleri.put(ülke,baskent+"\n");
-            System.out.println(ülke+"-"+baskent);
+
+
+            //System.out.println(ülke+"-"+baskent);
 
         }
         System.out.println(ulkeVeBaskentleri);
+
     }
     @Test
     public void readExcelTest4() throws IOException {

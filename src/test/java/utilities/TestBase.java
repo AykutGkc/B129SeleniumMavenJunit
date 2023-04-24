@@ -174,4 +174,45 @@ public abstract class TestBase {
         System.out.println(satirSutun.getText());
     }
 
+    //Click metod
+    public static void click(WebElement element){
+        try {
+            element.click();
+        } catch (Exception e) {
+            JavascriptExecutor js= (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();",element);
+        }
+    }
+
+    //JC Scroll
+
+    public static void scrollWithJC(WebElement element){
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+
+    //JS Sayfa Sonu Scroll
+    public void scrollEnd(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    }
+    //JS Sayfa Başı Scroll
+    public void scrollHome(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+    }
+    //JS SendKeys
+    public void sendKeysJS(WebElement element,String text){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value='"+text+"'",element);
+    }
+
+    //JS sendAttributeVAlue
+    public void sendAttributeJS(WebElement element,String text){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value','"+text+"')",element);
+    }
+
+
+
 }
